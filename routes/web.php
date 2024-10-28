@@ -27,6 +27,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function () {
         Route::get('/create', 'CreateController')->name('admin.category.create');
     });
+    Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function () {
+        Route::post('/', 'StoreController')->name('admin.category.store');
+    });
 });
 
 Auth::routes();
