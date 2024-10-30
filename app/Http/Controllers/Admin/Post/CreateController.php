@@ -11,7 +11,7 @@ class CreateController extends Controller
     public function __invoke()
     {
         $categories = Category::all();
-        $tags =Tag::all();
+        $tags = Tag::all();
 
         return view('admin.post.create', compact('categories', 'tags'));
     }
