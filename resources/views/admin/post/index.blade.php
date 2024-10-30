@@ -45,8 +45,8 @@
                                         <tr>
                                             <td>{{$post->id}}</td>
                                             <td>{{$post->title}}</td>
-                                            <td><a href="{{route('admin.tag.show', $post->id)}}"><i class="far fa-eye"></i></a></td>
-                                            <td><a href="{{route('admin.tag.edit', $post->id)}}"><i class="fas fa-pencil-alt"></i></a></td>
+                                            <td><a href="{{route('admin.post.show', $post->id)}}"><i class="far fa-eye"></i></a></td>
+                                            <td><a href="{{route('admin.post.edit', $post->id)}}"><i class="fas fa-pencil-alt"></i></a></td>
                                             <td>
                                                 <form method="POST" action="{{route('admin.post.delete', $post->id)}}">
                                                     @csrf
