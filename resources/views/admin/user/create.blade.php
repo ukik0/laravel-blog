@@ -46,6 +46,19 @@
                                 <div class="text-danger">Обязательное поле</div>
                                 @enderror
                             </div>
+                            <div class="form-group w-50">
+                                <label>Выберите роль</label>
+                                <select name="role" class="form-control">
+                                    @foreach($roles as $id=>$role)
+                                        <option value="{{$id}}">
+                                            {{$role}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('role')
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
                             <button type="submit" class="btn btn-primary">
                                 Добавить
                             </button>
