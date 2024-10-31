@@ -85,6 +85,9 @@
                                     @endforeach
                                 </select>
                             </div>
+                            @error('$category_id')
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
                             <div class="form-group">
                                 <label>Теги</label>
                                 <select name="tag_ids[]" class="select2" multiple="multiple"
