@@ -29,9 +29,10 @@
                         <form method="POST" action="{{route('admin.post.store')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group w-25">
-                                <input value="{{old('title')}}" type="text" class="form-control" name="title" placeholder="Название поста">
+                                <input value="{{old('title')}}" type="text" class="form-control" name="title"
+                                       placeholder="Название поста">
                                 @error('title')
-                                    <div class="text-danger">Обязательное поле</div>
+                                <div class="text-danger">{{$message}}</div>
                                 @enderror
                             </div>
                             <div class="from-group">
@@ -39,7 +40,7 @@
                                     {{old('content')}}
                                 </textarea>
                                 @error('content')
-                                <div class="text-danger">Обязательное поле</div>
+                                <div class="text-danger">{{$message}}</div>
                                 @enderror
                             </div>
                             <div class="form-group w-50">
@@ -47,14 +48,15 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" name="preview_image">
-                                        <label class="custom-file-label" for="exampleInputFile">Выберите изображение</label>
+                                        <label class="custom-file-label" for="exampleInputFile">Выберите
+                                            изображение</label>
                                     </div>
                                     <div class="input-group-append">
                                         <span class="input-group-text">Загрузить</span>
                                     </div>
                                 </div>
                                 @error('preview_image')
-                                    <div class="text-danger">Обязательное поле</div>
+                                <div class="text-danger">{{$message}}</div>
                                 @enderror
                             </div>
                             <div class="form-group w-50">
@@ -62,14 +64,15 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" name="main_image">
-                                        <label class="custom-file-label" for="exampleInputFile">Выберите изображение</label>
+                                        <label class="custom-file-label" for="exampleInputFile">Выберите
+                                            изображение</label>
                                     </div>
                                     <div class="input-group-append">
                                         <span class="input-group-text">Загрузить</span>
                                     </div>
                                 </div>
                                 @error('main_image')
-                                    <div class="text-danger">Обязательное поле</div>
+                                <div class="text-danger">{{$message}}</div>
                                 @enderror
                             </div>
                             <div class="form-group w-25">
@@ -84,12 +87,17 @@
                             </div>
                             <div class="form-group">
                                 <label>Теги</label>
-                                <select name="tag_ids[]" class="select2" multiple="multiple" data-placeholder="Выберите теги" style="width: 100%;">
+                                <select name="tag_ids[]" class="select2" multiple="multiple"
+                                        data-placeholder="Выберите теги" style="width: 100%;">
                                     @foreach($tags as $tag)
-                                        <option {{is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? "selected" : ''}} value="{{$tag->id}}">{{$tag->title}}</option>
+                                        <option
+                                            {{is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? "selected" : ''}} value="{{$tag->id}}">{{$tag->title}}</option>
                                     @endforeach
                                 </select>
                             </div>
+                            @error('tag_ids')
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
                             <button type="submit" class="btn btn-primary">
                                 Добавить
                             </button>
